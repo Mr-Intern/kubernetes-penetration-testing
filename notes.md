@@ -11,6 +11,12 @@ Note: sorry this is sort of a dump of notes at the moment. Hopefully I will orga
 ## Pod Enumeration
 - env | grep KUBE
   - this should expose IP's and service ports `    
+- check for dangerous default settings
+  - is there no security context present? (dangerous default)
+  - can this pod see and talk to every other pod on the cluster? (dangerous default)
+  - can this pod query host and pod metadata via environment variables? (dangerous default)
+  - is network traffic between pods unencrypted? (dangerous default) 
+ 
 ## Container Escape 
 
 ## Privilege Escalation
