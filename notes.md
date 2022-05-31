@@ -12,6 +12,7 @@ Note: sorry this is sort of a dump of notes at the moment. Hopefully I will orga
 - env | grep KUBE
   - this should expose IP's and service ports `    
 - check for dangerous default settings
+  - (cloud) can this pod access cloud resources? 
   - is there no security context present? (dangerous default)
   - can this pod see and talk to every other pod on the cluster? (dangerous default)
   - can this pod query host and pod metadata via environment variables? (dangerous default)
