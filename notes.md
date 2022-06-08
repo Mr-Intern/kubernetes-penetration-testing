@@ -9,15 +9,14 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
 ## Recon
 - kubernetes ports (official documentation) https://kubernetes.io/docs/reference/ports-and-protocols/
 - run kubolt to find public unauthenticated kubernetes clusters https://github.com/averonesis/kubolt
- - follow up with recon using `kubehunter --remote 192.168.0.0` 
+  - follow up with recon using `kubehunter --remote 192.168.0.0` 
 - manually enumerate for unauthenticated access to kubelet api
- - port 10255 (old) and 10250 is the https kubelet api
+  - port 10255 (old) and 10250 is the https kubelet api
   - https://NODE_IP:10250/pods
   - https://NODE_IP:10250/spec  
   - https://NODE_IP:10250/exec
 
 ## Initial Foothold
-
 - Typosquatting
   - Create a malicious image in a public container registry with a name similar to a real image. The backdoor planted in your malicious image will allow you a foothold in the container
 - stolen service account credentials
