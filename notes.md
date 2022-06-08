@@ -11,10 +11,10 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
 - run kubolt to find public unauthenticated kubernetes clusters https://github.com/averonesis/kubolt
   - follow up with recon using `kubehunter --remote 192.168.0.0` 
 - manually enumerate for unauthenticated access to kubelet api
-  - port 10255 (old) and 10250 is the https kubelet api
-  - https://NODE_IP:10250/pods
-  - https://NODE_IP:10250/spec  
-  - https://NODE_IP:10250/exec
+  - `port 10255` (old) and `port 10250` is the https kubelet api
+  - `https://NODE_IP:10250/pods`
+  - `https://NODE_IP:10250/spec` 
+  - `https://NODE_IP:10250/exec`
 
 ## Initial Foothold
 - Typosquatting
@@ -22,8 +22,8 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
 - stolen service account credentials
 
 ## Pod Enumeration
-- env | grep KUBE
-  - this should expose IP's and service ports `    
+- `env | grep KUBE`
+  - this should expose IP's and service ports    
 - is there a service account token mounted in this pod?
   - run `kubectl auth can-i --list`
 - check for dangerous default settings
