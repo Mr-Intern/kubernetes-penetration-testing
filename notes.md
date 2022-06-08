@@ -10,7 +10,6 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
 - kubernetes ports (official documentation) https://kubernetes.io/docs/reference/ports-and-protocols/
 - run kubolt to find public unauthenticated kubernetes clusters https://github.com/averonesis/kubolt
  - follow up with recon using `kubehunter --remote 192.168.0.0` 
-
 - manually enumerate for unauthenticated access to kubelet api
  - port 10255 (old) and 10250 is the https kubelet api
   - https://NODE_IP:10250/pods
@@ -21,25 +20,20 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
 
 - Typosquatting
   - Create a malicious image in a public container registry with a name similar to a real image. The backdoor planted in your malicious image will allow you a foothold in the container
-
 - stolen service account credentials
 
 ## Pod Enumeration
 - env | grep KUBE
   - this should expose IP's and service ports `    
-
 - is there a service account token mounted in this pod?
   - run `kubectl auth can-i --list`
- 
 - check for dangerous default settings
   - (cloud) can this pod access cloud resources? 
   - is there no security context present? (dangerous default)
   - can this pod see and talk to every other pod on the cluster? (dangerous default)
   - can this pod query host and pod metadata via environment variables? (dangerous default)
   - is network traffic between pods unencrypted? (dangerous default) 
-
 - enumerate the mounted volumes in the `/mnt/foo` directory for useful information  
-
 - api access?
  - kube-api is where secrets live. Query the API for secrets!
  
