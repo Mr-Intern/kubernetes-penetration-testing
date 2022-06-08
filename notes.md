@@ -21,7 +21,7 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
   - Create a malicious image in a public container registry with a name similar to a real image. The backdoor planted in your malicious image will allow you a foothold in the container
 - stolen service account credentials
 
-## Pod Enumeration
+## Enumeration (inside pod)
 - `env | grep KUBE`
   - this should expose IP's and service ports    
 - is there a service account token mounted in this pod?
