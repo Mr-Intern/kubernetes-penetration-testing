@@ -26,6 +26,18 @@ Disclaimer: Use these tips only on clusters you are authorized to be infiltratin
   - this should expose IP's and service ports    
 - is there a service account token mounted in this pod?
   - run `kubectl auth can-i --list`
+  - check in `/var/run/secrets/kubernetes.io/serviceaccount/token`
+- "i have a service account token... what next"
+  - `curl https://kubernetes.default/api/v1/namespaces/default/pods/ --header "Authorization: Bearer ${TOKEN}" --insecure`
+  - `kubectl --token="$(<${DIR}/token)" --certificate-authority="${DIR}/ca.crt" get pods`
+  - `kubectl --token="$(<${DIR}/token)" --insecure-skip-tls-verify get pods`
+  - `kubectl --token="$(<${DIR}/token)" -k get buckets ack-test-smoke-s3 -o yaml` 
+  - source: "Hacking Kubernetes" page 181
+- enumerate DNS to find IP's and Domains associated with the cluster
+  - `openssl s_client -connect kubernetes.default:443 \
+  < /dev/null 2>/dev/null |
+  openssl x509 -noout -text | grep -E "DNS:|IP Address:"`
+  - source: "Hacking Kubernetes" page 183 
 - check for dangerous default settings
   - (cloud) can this pod access cloud resources? 
   - is there no security context present? (dangerous default)
